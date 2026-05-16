@@ -7,15 +7,19 @@
    green and purple". */
 
 :root {
-  --bg:           #0a0a0a;   /* page background */
-  --surface:      #161616;   /* AI bubble + input box */
-  --border:       #2a2a2a;   /* subtle dividers */
-  --text:         #ededed;   /* main text */
-  --text-muted:   #8a8a8a;   /* subtitles, hints */
-  --accent:       #3b82f6;   /* user bubble + send button */
-  --accent-hover: #2563eb;
+  --knicks-blue:  #006bb6;
+  --knicks-orange:#f58426;
+  --knicks-navy:  #061a2b;
+
+  --bg:           var(--knicks-navy);   /* page background base */
+  --surface:      rgba(255,255,255,0.04); /* AI bubble + input box */
+  --border:       rgba(255,255,255,0.06); /* subtle dividers */
+  --text:         #ffffff;   /* main text */
+  --text-muted:   rgba(255,255,255,0.75);   /* subtitles, hints */
+  --accent:       var(--knicks-orange);   /* user bubble + send button */
+  --accent-hover: #d96b1d;
   --user-bubble:  var(--accent);
-  --ai-bubble:    var(--surface);
+  --ai-bubble:    rgba(255,255,255,0.06);
 
   --radius:       12px;
   --font: "Inter", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
@@ -36,11 +40,19 @@ body {
   margin: 0;
   padding: 0;
   height: 100%;
-  background: var(--bg);
   color: var(--text);
   font-family: var(--font);
   font-size: 16px;
   line-height: 1.5;
+  background-color: var(--bg);
+  /* Layered background: navy base, subtle diagonal orange accent, and fine texture */
+  background-image:
+    linear-gradient(135deg, rgba(245,132,38,0.10) 0%, rgba(245,132,38,0.06) 6%, rgba(0,0,0,0) 20%),
+    repeating-linear-gradient(135deg, rgba(255,255,255,0.02) 0 2px, transparent 2px 48px),
+    radial-gradient(circle at 10% 10%, rgba(255,255,255,0.02), rgba(255,255,255,0) 20%),
+    linear-gradient(180deg, var(--knicks-navy), #042034);
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 body {
@@ -59,8 +71,16 @@ body {
 .app-title {
   margin: 0;
   font-size: 28px;
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: -0.02em;
+  color: var(--knicks-orange);
+  text-transform: none;
+}
+
+.app-meta {
+  margin: 6px 0 0;
+  color: var(--text);
+  font-size: 14px;
 }
 
 .app-subtitle {
@@ -120,6 +140,7 @@ body {
   background: var(--ai-bubble);
   border: 1px solid var(--border);
   border-bottom-left-radius: 4px;
+  color: var(--text);
 }
 
 .message-ai.is-streaming .message-bubble::after {
@@ -149,7 +170,8 @@ body {
 }
 
 .composer-input:focus {
-  border-color: var(--accent);
+  border-color: var(--knicks-blue);
+  box-shadow: 0 0 0 3px rgba(0,107,182,0.08);
 }
 
 .composer-send {
@@ -159,9 +181,9 @@ body {
   border: none;
   border-radius: var(--radius);
   font: inherit;
-  font-weight: 600;
+  font-weight: 700;
   cursor: pointer;
-  transition: background 0.15s;
+  transition: background 0.15s, transform 0.08s;
 }
 
 .composer-send:hover:not(:disabled) {
