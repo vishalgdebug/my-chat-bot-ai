@@ -3,52 +3,163 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AI Chat</title>
-    <link
-      rel="preconnect"
-      href="https://fonts.googleapis.com"
-    />
-    <link
-      rel="preconnect"
-      href="https://fonts.gstatic.com"
-      crossorigin
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
+    <title>Knicks Rookie Mentor</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
-    <!-- App header: update these lines with your name, school, and title -->
-    <header class="app-header">
-      <h1 class="app-title">Final Project — My Knicks Chat App</h1>
-      <p class="app-meta"><strong>Name:</strong> Vishal Ghosh &nbsp;|&nbsp; <strong>School:</strong> Aviation Highschool</p>
-      <p class="app-subtitle">A chat app about the New York Knickerbockers and their players.</p>
-    </header>
-
-    <main class="chat" id="chat">
-      <div class="chat-messages" id="messages">
-        <div class="message message-ai">
-          <div class="message-bubble">
-            Hi! Ask me anything to get started.
+    <div class="page-shell">
+      <header class="topbar">
+        <div class="brand">
+          <div class="brand-badge">KN</div>
+          <div>
+            <p class="brand-label">Knicks Rookie Mentor</p>
+            <p class="brand-subtitle">Your veteran guide inside the Knicks locker room</p>
           </div>
         </div>
-      </div>
+        <nav class="nav-tabs">
+          <button class="nav-tab active">Home</button>
+        </nav>
+      </header>
 
-      <form class="composer" id="composer" autocomplete="off">
-        <input
-          class="composer-input"
-          id="composer-input"
-          type="text"
-          placeholder="Type a message..."
-          required
-        />
-        <button class="composer-send" id="composer-send" type="submit">
-          Send
-        </button>
-      </form>
-    </main>
+      <div class="layout-grid">
+        <aside class="sidebar-panel">
+          <div class="panel glass-card profile-card">
+            <div class="profile-top">
+              <div>
+                <p class="eyebrow">Rookie Status</p>
+                <h2>Draft Day Prospect</h2>
+                <p class="profile-tag">Small Forward • #23</p>
+              </div>
+              <div class="status-badge">Knicks Blue</div>
+            </div>
+
+            <div class="stat-block">
+              <div class="stat-row">
+                <span>Confidence</span>
+                <strong id="confidence-value">0%</strong>
+              </div>
+              <div class="meter-bar">
+                <div class="meter-fill blue" id="confidence-fill" style="width: 0%"></div>
+              </div>
+            </div>
+
+            <div class="stat-block">
+              <div class="stat-row">
+                <span>Practice Streak</span>
+                <strong id="streak-value">0 days</strong>
+              </div>
+              <div class="meter-bar">
+                <div class="meter-fill orange" id="streak-fill" style="width: 0%"></div>
+              </div>
+            </div>
+
+            <div class="stat-block">
+              <div class="stat-row">
+                <span>Rookie XP</span>
+                <strong id="xp-value">0 / 2,500</strong>
+              </div>
+              <div class="meter-bar">
+                <div class="meter-fill neon" id="xp-fill" style="width: 0%"></div>
+              </div>
+            </div>
+
+            <div class="roster-glance">
+              <div class="stat-pill">
+                <span>PTS</span>
+                <strong id="pts-value">0</strong>
+              </div>
+              <div class="stat-pill">
+                <span>REB</span>
+                <strong id="reb-value">0</strong>
+              </div>
+              <div class="stat-pill">
+                <span>AST</span>
+                <strong id="ast-value">0</strong>
+              </div>
+            </div>
+
+            <div class="sidebar-note">
+              <p>Use the quick actions to get instant rookie routines, film study plans, and locker room tips from your veteran mentor.</p>
+            </div>
+          </div>
+        </aside>
+
+        <section class="chat-panel">
+          <div class="panel glass-card chat-header">
+            <div>
+              <p class="eyebrow">Live Mentor Chat</p>
+              <h1>Ask the veteran teammate</h1>
+            </div>
+            <div class="chat-status">
+              <span class="status-dot"></span>
+              <span>Ready to help</span>
+            </div>
+          </div>
+
+          <div class="panel glass-card chat-window">
+            <div class="chat-messages" id="messages">
+              <div class="message message-ai">
+                <div class="message-bubble">
+                  Yo rookie — roll with me. Ask about pregame prep, team culture, practice habits, or media moves.
+                </div>
+              </div>
+            </div>
+
+            <form class="composer" id="composer" autocomplete="off">
+              <input class="composer-input" id="composer-input" type="text" placeholder="Ask about playbook, film study, or media prep..." required />
+              <button class="composer-send" id="composer-send" type="submit">Send</button>
+            </form>
+          </div>
+        </section>
+
+        <aside class="actions-panel">
+          <div class="panel glass-card actions-header">
+            <p class="eyebrow">Quick Actions</p>
+            <h2>Tap a drill or routine</h2>
+          </div>
+          <div class="action-grid">
+            <button class="action-card" data-prompt="Give me a complete pregame routine." type="button">
+              <span>Pregame Routine</span>
+            </button>
+            <button class="action-card" data-prompt="Share a practice drill I can use today." type="button">
+              <span>Practice Drill</span>
+            </button>
+            <button class="action-card" data-prompt="Help me build a film study plan." type="button">
+              <span>Film Study</span>
+            </button>
+            <button class="action-card" data-prompt="What should I say in a rookie media interview?" type="button">
+              <span>Media Interview</span>
+            </button>
+            <button class="action-card" data-prompt="Give me locker room advice for my first week." type="button">
+              <span>Locker Room Advice</span>
+            </button>
+            <button class="action-card" data-prompt="How do I handle a coach conversation after practice?" type="button">
+              <span>Coach Conversation</span>
+            </button>
+          </div>
+        </aside>
+      </div>
+    </div>
+
+    <div class="onboard-modal" id="onboard-modal" role="dialog" aria-modal="true">
+      <div class="modal-panel glass-card">
+        <button class="modal-close" id="onboard-close" aria-label="Close">×</button>
+        <div class="modal-content">
+          <div class="modal-badge">Welcome</div>
+          <h2>Welcome to the Knicks Rookie Mentor</h2>
+          <p>Quickly train smart, build confidence, and lean on a veteran mentor for team culture, practice habits, and media prep.</p>
+          <ul class="onboard-list">
+            <li>Tap a quick action to get instant routines and drills</li>
+            <li>Ask about game prep, play concepts, and locker room habits</li>
+            <li>Keep it real: if I don't know current roster info, I'll say so</li>
+          </ul>
+          <button class="modal-action" id="onboard-start" type="button">Start training</button>
+        </div>
+      </div>
+    </div>
 
     <script type="module" src="/app.js"></script>
   </body>
